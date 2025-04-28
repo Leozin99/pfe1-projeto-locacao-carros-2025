@@ -1,3 +1,5 @@
+@import url(./style.css);
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -16,7 +18,7 @@ h1 {
     font-size: 2rem;
 }
 
-/* Modal Styles */
+
 .modal {
     display: none;
     position: fixed;

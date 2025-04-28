@@ -1,4 +1,8 @@
+@import url(./style.css);
+
+
 .car-grid {
+
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -47,7 +51,7 @@
 }
 
 
-/* Estilos para o header e navegação */
+
 .header-container {
     display: flex;
     justify-content: space-between;
