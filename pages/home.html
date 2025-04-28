@@ -14,9 +14,9 @@
             <h1>Leo Veiculos</h1>
             <nav class="main-nav">
                 <ul>
-                    <li><a href="/pages/home.html" class="active">Home</a></li>
-                    <li><a href="/pages/locacoes.html">Locações</a></li>
-                    <li><a href="/pages/tabelainfs.html">Locações Ativas</a></li>
+                    <li><a href="home.html" class="active">Home</a></li>
+                    <li><a href="locacoes.html">Locações</a></li>
+                    <li><a href="tabelainfs.html">Locações Ativas</a></li>
                 </ul>
             </nav>
         </div>
@@ -61,7 +61,7 @@
     <div id="carModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
-            <img src="car-details.png" alt="Car Image">
+            <img src="../imagens/car-details.png" alt="Car Image">
             <h2 id="modalCarName">Car Name</h2>
             <p id="modalCarBrand">Brand</p>
             <table>
@@ -73,6 +73,30 @@
         </div>
     </div>
 
-    <script src="home.js"></script>
+    <script>
+        
+        function openModal(name, brand, color, mileage, price) {
+            document.getElementById('modalCarName').textContent = name;
+            document.getElementById('modalCarBrand').textContent = brand;
+            document.getElementById('modalCarColor').textContent = color;
+            document.getElementById('modalCarMileage').textContent = mileage;
+            document.getElementById('modalCarPrice').textContent = price;
+            
+            document.getElementById('carModal').style.display = 'block';
+        }
+
+        
+        function closeModal() {
+            document.getElementById('carModal').style.display = 'none';
+        }
+
+        
+        window.onclick = function(event) {
+            const modal = document.getElementById('carModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>
