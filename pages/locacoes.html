@@ -1,13 +1,142 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Locadora ACME</title>
-    <link rel="stylesheet" href="../styles/locacoes.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Locações - Leo Veiculos</title>
+  <link rel="stylesheet" href="../styles/style.css">
+  <link rel="stylesheet" href="../styles/home.css">
+  <link rel="stylesheet" href="../styles/locacoes.css">
 </head>
+
 <body>
+  <header>
+    <h1>Locações Disponíveis</h1>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h2>Encontre o carro perfeito para sua viajem.</h2>
+      <p>Oferecemos uma variedade de veículos para atender às suas necessidades com conforto e segurança.</p>
+    </section>
+
+    <section class="car-list">
+      <div class="car-card">
+        <img src="../imagens/carro2.jpg" alt="Fiesta Titanium" />
+        <h3>Fiesta Titanium</h3>
+        <p>Ford - 2022</p>
+        <p>Cor: Branco</p>
+        <p>Quilometragem: 18.000 km</p>
+        <p>Preço por dia: R$ 95</p>
+        <button onclick="abrirModalCadastro('Fiesta Titanium', 'Ford')">Alugar</button>
+      </div>
+
+      <div class="car-card">
+        <img src="../imagens/carro1.jpeg" alt="Pulse Drive" />
+        <h3>Pulse Drive</h3>
+        <p>Fiat - 2023</p>
+        <p>Cor: Cinza</p>
+        <p>Quilometragem: 12.500 km</p>
+        <p>Preço por dia: R$ 110</p>
+        <button onclick="abrirModalCadastro('Pulse Drive', 'Fiat')">Alugar</button>
+      </div>
+
+      <div class="car-card">
+        <img src="../imagens/carro3.jpg" alt="Tracker Premier" />
+        <h3>Tracker Premier</h3>
+        <p>Chevrolet - 2024</p>
+        <p>Cor: Preto</p>
+        <p>Quilometragem: 5.000 km</p>
+        <p>Preço por dia: R$ 140</p>
+        <button onclick="abrirModalCadastro('Tracker Premier', 'Chevrolet')">Alugar</button>
+      </div>
+
+      <div class="car-card">
+        <img src="../imagens/carro4.jpg" alt="Hrv" />
+        <h3>HRV</h3>
+        <p>Honda - 2021</p>
+        <p>Cor: Vermelho</p>
+        <p>Quilometragem: 30.000 km</p>
+        <p>Preço por dia: R$ 120</p>
+        <button onclick="abrirModalCadastro('HRV', 'Honda')">Alugar</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Leo Veiculos. Todos os direitos reservados.</p>
+  </footer>
+
+  <div id="modalCadastro" class="modal">
+    <div class="modal-content">
+      <span class="close-button" onclick="fecharModalCadastro()">&times;</span>
+      <h2>Nova Locação</h2>
+      <form id="cadastroForm" onsubmit="processarFormulario(event)">
+        <label for="cliente">Nome Completo:</label>
+        <input type="text" id="cliente" name="cliente" required>
+
+        <label for="cpf">CPF:</label>
+        <input type="text" id="cpf" name="cpf" required>
+
+        <label for="dataInicio">Início da Locação:</label>
+        <input type="date" id="dataInicio" name="dataInicio" required>
+
+        <label for="dataFim">Data de Entrega:</label>
+        <input type="date" id="dataFim" name="dataFim" required>
+
+        <input type="hidden" id="carroModelo" name="carroModelo">
+        <input type="hidden" id="carroMarca" name="carroMarca">
+
+        <button type="submit" class="botao-cadastrar">Confirmar Locação</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
     
+    let locacoes = JSON.parse(localStorage.getItem('locacoes')) || [];
+    
+    function abrirModalCadastro(modelo, marca) {
+      document.getElementById("modalCadastro").style.display = "block";
+      document.getElementById("carroModelo").value = modelo;
+      document.getElementById("carroMarca").value = marca;
+    }
+
+    function fecharModalCadastro() {
+      document.getElementById("modalCadastro").style.display = "none";
+    }
+
+    function processarFormulario(event) {
+      event.preventDefault();
+      
+      
+      const novaLocacao = {
+        id: locacoes.length + 1,
+        modelo: document.getElementById("carroModelo").value,
+        marca: document.getElementById("carroMarca").value,
+        cliente: document.getElementById("cliente").value,
+        cpf: document.getElementById("cpf").value,
+        dataInicio: document.getElementById("dataInicio").value,
+        dataFim: document.getElementById("dataFim").value,
+        status: "Em andamento"
+      };
+      
+      
+      locacoes.push(novaLocacao);
+      
+      
+      localStorage.setItem('locacoes', JSON.stringify(locacoes));
+      
+      
+      window.location.href = "tabelainfs.html";
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById("modalCadastro");
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
 </body>
-<script src="../scripts/locacoes.js"></script>
 </html>

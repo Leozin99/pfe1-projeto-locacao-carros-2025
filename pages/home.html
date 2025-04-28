@@ -1,13 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Locadora ACME</title>
+    <title>Leo Veiculos - Home</title>
+    <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/home.css">
+    <link rel="stylesheet" href="../styles/locacoes.css">
 </head>
 <body>
-    
+    <header>
+        <h1>Leo Veiculos</h1>
+    </header>
+
+    <main>
+        <section class="car-grid">
+            <div class="car-card">
+                <img src="../imagens/carro2.jpg" alt="Ford Fiesta">
+                <h2>Fiesta</h2>
+                <p>Ford</p>
+                <p>2022</p>
+                <button onclick="openModal('Fiesta Titanium', 'Ford', 'White', '18,000 km', '$95')">Ande com Conforto</button>
+            </div>
+
+            <div class="car-card">
+                <img src="../imagens/carro1.jpeg" alt="Fiat Pulse">
+                <h2>Pulse</h2>
+                <p>Fiat</p>
+                <p>2023</p>
+                <button onclick="openModal('Pulse Drive', 'Fiat', 'Gray', '12,500 km', '$110')">Ande com Conforto</button>
+            </div>
+
+            <div class="car-card">
+                <img src="../imagens/carro3.jpg" alt="Chevrolet Tracker">
+                <h2>Tracker</h2>
+                <p>Chevrolet</p>
+                <p>2024</p>
+                <button onclick="openModal('Tracker Premier', 'Chevrolet', 'Black', '5,000 km', '$140')">Ande com Conforto</button>
+            </div>
+
+            <div class="car-card">
+                <img src="../imagens/carro4.jpg" alt="Honda HRV">
+                <h2>HRV</h2>
+                <p>Honda</p>
+                <p>2021</p>
+                <button onclick="openModal('HRV Touring', 'Honda', 'Red', '30,000 km', '$85')">Ande com Conforto</button>
+            </div>
+        </section>
+    </main>
+
+    <div id="carModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img src="car-details.png" alt="Car Image">
+            <h2 id="modalCarName">Car Name</h2>
+            <p id="modalCarBrand">Brand</p>
+            <table>
+                <tr><td>Color:</td><td id="modalCarColor"></td></tr>
+                <tr><td>Mileage:</td><td id="modalCarMileage"></td></tr>
+                <tr><td>Price Per Day:</td><td id="modalCarPrice"></td></tr>
+            </table>
+            <button class="rent-button">Alugar</button>
+        </div>
+    </div>
+
+    <script src="home.js"></script>
 </body>
-<script src="../scripts/home.js"></script>
 </html>

@@ -1,1 +1,166 @@
-@import url(./style.css);
+
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #99DDFF;
+    color: #003366;
+  }
+  
+  header {
+    background-color: #003366;
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+  }
+  
+  .intro {
+    text-align: center;
+    padding: 2rem;
+    background-color: #00CCFF;
+    color: #003366;
+  }
+  
+  .intro h2 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .car-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+  }
+  
+  .car-card {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 2px solid #006699;
+    border-radius: 8px;
+    width: 250px;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .car-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
+  
+  .car-card h3 {
+    margin: 0.5rem 0;
+    color: #003366;
+  }
+  
+  .car-card p {
+    margin: 0.25rem 0;
+    color: #006699;
+  }
+  
+  .car-card button {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #006699;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .car-card button:hover {
+    background-color: #0099CC;
+  }
+  
+  footer {
+    background-color: #003366;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+  }
+  
+  
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    padding-top: 80px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 51, 102, 0.7); 
+  }
+  
+  .modal-content {
+    background-color: rgba(255, 255, 255, 0.95); 
+    margin: auto;
+    padding: 30px;
+    border: 2px solid #0099CC; 
+    width: 400px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    animation: abrirModal 0.5s ease;
+  }
+  
+  @keyframes abrirModal {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+  
+  .close-button {
+    color: #003366; 
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .close-button:hover {
+    color: #00CCFF; 
+  }
+  
+  .modal-content h2 {
+    text-align: center;
+    color: #006699; 
+    margin-bottom: 20px;
+  }
+  
+  .modal-content label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #003366; 
+  }
+  
+  .modal-content input, .modal-content select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #99DDFF; 
+    border-radius: 6px;
+    background-color: #f9f9f9;
+  }
+  
+  .modal-content input:focus, .modal-content select:focus {
+    border-color: #00CCFF; 
+    outline: none;
+  }
+  
+  .botao-cadastrar {
+    margin-top: 20px;
+    width: 100%;
+    background-color: #0099CC; 
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .botao-cadastrar:hover {
+    background-color: #00CCFF; 
+  }
+  

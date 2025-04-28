@@ -1,1 +1,49 @@
-@import url(./style.css);
+.car-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 2rem;
+    gap: 2rem;
+}
+
+.car-card {
+    background-color: #00CCFF;
+    padding: 1rem;
+    border-radius: 8px;
+    width: 220px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.car-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.car-card h2 {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+    color: #003366;
+}
+
+.car-card p {
+    margin: 0.2rem 0;
+    color: #006699;
+}
+
+.car-card button {
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: #003366;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.car-card button:hover {
+    background-color: #006699;
+}
+
+

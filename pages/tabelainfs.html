@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Rental System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../styles/tabelainfs.css">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/home.css">
+    <link rel="stylesheet" href="../styles/locacoes.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-car"></i> CAR RENTAL SYSTEM</h1>
+            <div class="header-actions">
+                <button class="btn btn-primary" onclick="window.location.href='locacoes.html'">
+                    <i class="fas fa-plus"></i> Novo Aluguel
+                </button>
+                <button class="btn btn-secondary"><i class="fas fa-filter"></i> Filtros</button>
+            </div>
+        </header>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Modelo</th>
+                        <th>Marca</th>
+                        <th>Cliente</th>
+                        <th>CPF</th>
+                        <th>Data Início</th>
+                        <th>Data Devolução</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="tabelaLocacoes">
+                    
+                </tbody>
+            </table>
+        </div>
+
+        <footer class="footer">
+            <p>Sistema de Aluguel de Veículos &copy; 2025 - Versão 1.0</p>
+            <div class="footer-links">
+                <a href="#"><i class="fas fa-question-circle"></i> Ajuda</a>
+                <a href="#"><i class="fas fa-cog"></i> Configurações</a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        
+        const locacoes = JSON.parse(localStorage.getItem('locacoes')) || [];
+        const tabela = document.getElementById('tabelaLocacoes');
+        
+        
+        locacoes.forEach(locacao => {
+            const row = document.createElement('tr');
+            
+            
+            const dataInicio = new Date(locacao.dataInicio);
+            const dataFim = new Date(locacao.dataFim);
+            
+            const dataInicioFormatada = dataInicio.toLocaleDateString('pt-BR');
+            const dataFimFormatada = dataFim.toLocaleDateString('pt-BR');
+            
+            row.innerHTML = `
+                <td>${locacao.id}</td>
+                <td>${locacao.modelo}</td>
+                <td>${locacao.marca}</td>
+                <td>${locacao.cliente}</td>
+                <td>${locacao.cpf}</td>
+                <td>${dataInicioFormatada}</td>
+                <td>${dataFimFormatada}</td>
+                <td><span class="status-badge ${locacao.status === 'Em andamento' ? 'pending' : 'completed'}">
+                    ${locacao.status}
+                </span></td>
+                <td>
+                    <button class="btn-action danger" title="Excluir" onclick="excluirLocacao(${locacao.id})">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                    <button class="btn-action info" title="Editar">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                </td>
+            `;
+            
+            tabela.appendChild(row);
+        });
+        
+        function excluirLocacao(id) {
+            if(confirm('Tem certeza que deseja excluir esta locação?')) {
+                const novasLocacoes = locacoes.filter(locacao => locacao.id !== id);
+                localStorage.setItem('locacoes', JSON.stringify(novasLocacoes));
+                window.location.reload();
+            }
+        }
+    </script>
+</body>
+</html>
